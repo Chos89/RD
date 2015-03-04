@@ -1,0 +1,27 @@
+<template name="jobs">
+	<div class="col-md-8 col-md-offset-1">
+	<table>	 
+	{{#each jobs}} 
+		
+		<tr>
+		
+			
+			<td>
+			
+				<a href=""><p class="short-desc">{{shortJobDesc}}</p></a>
+
+				<p class="company">{{company}}</p>
+
+			</td>
+			<td>
+				<p class="date">{{formatDate date}}</p>
+			</td>
+			
+		</tr>
+				
+
+	{{/each}}	
+	</table>
+	</div>
+	
+</template>
