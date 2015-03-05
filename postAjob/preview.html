@@ -8,9 +8,13 @@
 			
 			<p class="company-preview">{{job.company}}</p>
 
-			<a href="{{job.companyUrl}}"><span class="short-desc">- {{job.shortJobDesc}}</span></a>
+			<span class="short-desc">- {{job.shortJobDesc}}</span>
 
 			<a href="{{job.companyUrl}}"><p class="company-url">{{job.companyUrl}}</p></a>
+
+			<p>{{job.location}}</p>
+
+			<p>Posted at {{formatDate job.date}}</p>
 
 			<label>About us:</label>
 			<p>{{{job.aboutCompany}}}</p>
@@ -20,6 +24,9 @@
 
 			<label>Bonus points:</label>
 			<p>{{{job.bonus}}}</p>
+
+			<label>Perks:</label>
+			<p>{{job.perks}}</p>
 
 			<label>How to contact us:</label>
 			<p>{{{job.contact}}}</p>

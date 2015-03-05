@@ -38,7 +38,7 @@ if (Meteor.isClient) {
 		
 		$(document).ready(function() {
 		  $('.textarea').summernote({
-		  	height: 350,
+		  	height: 300,
 		  	toolbar: [
 		  		['style', ['bold', 'italic', 'underline']],
 		  		['para', ['ul', 'ol', 'paragraph']],
@@ -46,7 +46,9 @@ if (Meteor.isClient) {
 		  	]
 		  });
 		});
-	
+		$(function() {
+    $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+  });
 	}
 	
 	Template.form.created = function(){
@@ -57,7 +59,7 @@ if (Meteor.isClient) {
 
 	Template.form.events({
 
-		'keyup form': function(event){
+		'keyup form, click form': function(event){
 
 			
 	    var job = Session.get('job');
@@ -65,25 +67,32 @@ if (Meteor.isClient) {
     	var company = event.currentTarget.company.value;
     	var companyUrl = event.currentTarget.companyUrl.value;
     	var shortJobDesc = event.currentTarget.shortJobDesc.value;
+    	var location = event.currentTarget.location.value;
     	var aboutCompany = $('.textarea').eq(0).code();
     	var requirement = $('.textarea').eq(1).code();
     	var bonus = $('.textarea').eq(2).code();
-    	var contact = $('.textarea').eq(3).code();
+    	var perks = $('.textarea').eq(3).code();
+    	var contact = $('.textarea').eq(4).code();
 	    
+
+	    
+
 	    var data = {
 	      "company": company,
 	      "companyUrl": companyUrl,
 	      "shortJobDesc": shortJobDesc,
+	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
 	      "bonus": bonus,
+	      "perks": perks,
 	      "contact": contact,
 	      "date": new Date() 
 	    }
 	    
 
 	    Session.set('job', data);
-	    console.log(Session.get('job'))
+	    
 		},
 		
 		
@@ -93,23 +102,29 @@ if (Meteor.isClient) {
 
 	    var company = event.target.company.value;
 	    var companyUrl = event.target.companyUrl.value;
+	    var tags = $("#tags").tagsinput('items');
 	    var shortJobDesc = event.target.shortJobDesc.value;
+	    var location = event.target.location.value;
 	    var aboutCompany = $('.textarea').eq(0).code();
 	    var requirement = $('.textarea').eq(1).code();
 	    var bonus = $('.textarea').eq(2).code();
-	    var contact = $('.textarea').eq(3).code();
+	    var perks = $('.textarea').eq(3).code();
+	    var contact = $('.textarea').eq(4).code();
 
 	    Jobs.insert({
 	      "company": company,
 	      "companyUrl": companyUrl,
+	      "tags": tags,
 	      "shortJobDesc": shortJobDesc,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
+	      "bonus": bonus,
+	      "perks": perks,
 	      "contact": contact,
 	      "date": new Date() // current time
 	    });
 
-	    
+	    console.log(tags)
 	    // Prevent default form submit
 	    return false;
 	  }

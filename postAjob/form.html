@@ -1,31 +1,64 @@
 <template name="form">
 
 	<div class="col-md-5">
-			<form method="post" class="post">
-				<label for="company">Company name:</label>
-				<input type="text" id="company" name="company">
-				<br>
-				<label for="companyUrl">Company url:</label>
-				<input type="text" id="companyUrl" name="companyUrl">
-				<br>
-				<label for="shortJobDesc">Short job description:</label>
-				<input type="text" id="shortJobDesc" name="shortJobDesc">
-				<br>
-				<label for="aboutCompany">About your company:</label>
-			    <input type="text" class="textarea" id="aboutCompany" name="aboutCompany">
-				<br>
-				<label for="requirement">Required skills:</label>
-				<input type="text" class="textarea" id="requirement" name="requirement">
-				<br>
-				<label for="bonus">Bonus points:</label>
-				<input type="text" class="textarea" id="bonus" name="bonus">
-				<br>
-				<label for="contact">Contact: </label>
-				<input type="text" class="textarea" id="contact" name="contact">
-				<br>
-				<input id="submit" type="submit">
-				
-			</form>
-		</div>
+		<form method="post" class="post">
+			<label for="company">Company name:</label>
+			<input type="text" id="company" name="company" required>
+			<br>
+
+			<label for="companyUrl">Company url:</label>
+			<input type="text" id="companyUrl" name="companyUrl" placeholder="www.yourcompany.com" required>
+			<br>
+
+			<label for="category">Choose some tags so that people can find you more easily:</label>
+			<select  multiple id="tags" data-role="tagsinput">
+			  <option value="Front-end">Front-end</option>
+			  <option value="Back-end">Back-end</option>
+			  <option value="UI Desginer">UI Desginer</option>
+			  <option value="System architect">System architect</option>
+			</select>
+
+			<br>
+
+			<label for="shortJobDesc">Short job description:</label>
+			<input type="text" id="shortJobDesc" name="shortJobDesc" placeholder="Ruby on Rails specialist, UI designer, etc." required>
+			<br>
+
+			<label for="location">Work from:</label>
+			<select id="location">
+			  <option id="location" value="Anywhere in the world">Anywhere in the world</option>
+			  <option id="location" value="Anywhere in Nort America">Anywhere in North America</option>
+			  <option id="location" value="Anywhere in South America">Anywhere in South America</option>
+			  <option id="location" value="Anywhere in Europe">Anywhere in Europe</option>
+			  <option id="location" value="Anywhere in Asia">Anywhere in Asia</option>
+			  <option id="location" value="Anywhere in Africa">Anywhere in Africa</option>
+			  <option id="location" value="Anywhere in Australia and Oceania">Anywhere in Australia and Oceania</option>
+			</select>
+			<br>
+
+			<label for="aboutCompany">About your company:</label>
+		    <input type="text" class="textarea" id="aboutCompany" name="aboutCompany">
+			<br>
+
+			<label for="requirement">Required skills:</label>
+			<input type="text" class="textarea" id="requirement" name="requirement">
+			<br>
+
+			<label for="bonus">Bonus points:</label>
+			<input type="text" class="textarea" id="bonus" name="bonus">
+			<br>
+
+			<label for="perks">Perks:</label>
+			<input type="text" class="textarea" id="perks" name="perks">
+			<br>
+
+			<label for="contact">Contact: </label>
+			<input type="text" class="textarea" id="contact" name="contact">
+			<br>
+
+			<input id="submit" type="submit">
+			
+		</form>
+	</div>
 
 </template>
