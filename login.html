@@ -1,0 +1,21 @@
+<template name="login">
+	<div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="Log In" aria-hidden="true">
+  <div class="modal-dialog log-reg-modal">
+    <div class="modal-content log-reg-modal">
+      You must be logged in to post jobs.
+      
+      <form id="login-form" action="action">
+      	<label for="email">Email</label>
+        <input type="email" name="email"  id="login-email" required="required">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="login-password" required="required">
+        <input type="submit" id="submit" value="Sign in">
+      </form>
+
+      Don't have an account?
+
+      <a href="#registerModal" data-toggle="modal">Register</a>
+    </div>
+  </div>
+</div>
+</template>

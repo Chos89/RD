@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Lobster|Droid+Sans');
+@import url('http://fonts.googleapis.com/css?family=Lobster:400,700|Droid+Sans:400,700');
 
 //General
 body
@@ -6,8 +6,10 @@ body
 	height 100%
 	min-height 800px
 	background-color rgb(249, 249, 249)
-a, a:link, a:hover, a:active, a:visited
+a, a:link, a:hover, a:active, a:visited, a:focus
 	text-decoration none
+input
+	display block	
 // Body main
 
 .search
@@ -39,7 +41,6 @@ tr p
 .sidebar
 	margin-bottom 200px
 	border 2px solid #555
-	height 300px
 	border-radius 7px
 	padding 40px 20px
 	font-size 20px
@@ -97,7 +98,8 @@ tr p
 	font-size 22px
 	margin 15px	0
 .live-preview p
-	margin-left 7px		
+	margin-left 7px	
+	line-height 0px	
 .live-preview
 	background-color white
 	min-height 500px
@@ -110,6 +112,13 @@ tr p
 	display inline
 	font-weight bold
 	color #00001A	
+input[type="radio"]
+	display inline
+	width 20px
+label[for="engagement"]	
+	display block	
+label[for="tags"]	
+	margin-top 11px	
 // Navbar
 .navbar
 	background-color #333
@@ -149,8 +158,14 @@ tr p
 	background-color white 	  
 .teletype
 	font-weight bold
+.log-reg-modal
+	width 400px
+	height 550px
+	padding 23px
+.log-reg-modal input[type="submit"]
+	margin-top 10px	
 	 	 
-// Navbar End
+// Navbar End ▾
   
 // Footer
 .footer
