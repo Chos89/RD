@@ -10,11 +10,9 @@ insecure
 stylus
 twbs:bootstrap
 accounts-password
-accounts-ui-unstyled
 jquery
 iron:router
 momentjs:moment
 msavin:mongol
 fortawesome:fontawesome
 summernote:summernote
-accounts-ui

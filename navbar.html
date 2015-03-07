@@ -16,16 +16,15 @@
         <a href="/"><span class="button">HOME</span></a>
 
     		<a href="/postajob"><span class="button">POST A JOB</span></a>
-    		
+    		 {{#if currentUser}}
+          <span class="button">{{currentUser.username}}</span>
+        {{else}}
     		<a href="#logInModal" id="logIn" data-toggle="modal"><span class="button">LOG IN</span></a>
+        {{/if}} 
     	</div>
     </div>	
   </div>
-{{> login}}
-
-
-{{> register}}
-
-
-
+ 
+    {{> loginRegister}}
+ 
 </template>

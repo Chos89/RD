@@ -9,7 +9,9 @@ body
 a, a:link, a:hover, a:active, a:visited, a:focus
 	text-decoration none
 input
-	display block	
+	display block
+.invisible
+	display none		
 // Body main
 
 .search
@@ -159,11 +161,20 @@ label[for="tags"]
 .teletype
 	font-weight bold
 .log-reg-modal
-	width 400px
-	height 550px
+	width 265px
+	height 290px
 	padding 23px
+.log-reg-modal a
+	cursor default
+		
+.log-reg-modal input[type="email"],
+.log-reg-modal input[type="password"]
+	width 100%
 .log-reg-modal input[type="submit"]
-	margin-top 10px	
+	margin 10px 0
+.log-reg-modal label
+	display block
+	margin 5px		
 	 	 
 // Navbar End ▾
   
