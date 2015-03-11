@@ -1,0 +1,36 @@
+<template name="job">
+	
+	<div class="col-md-7">
+		<div class="live-preview">
+		
+		
+			<p class="company-preview">{{company}}</p>
+
+			<span class="short-desc">- {{shortJobDesc}}</span>
+			<span>{{engagement}}</span>
+
+			<a href="{{job.companyUrl}}"><p class="company-url">{{companyUrl}}</p></a>
+
+			<p>{{location}}</p>
+
+			<p>Posted at {{formatDate date}}</p>
+
+			<label>About us:</label>
+			<p>{{{aboutCompany}}}</p>
+
+			<label>Required skills:</label>
+			<p>{{{requirement}}}</p>
+
+			<label>Bonus points:</label>
+			<p>{{{bonus}}}</p>
+
+			<label>Perks:</label>
+			<p>{{perks}}</p>
+
+			<label>How to contact us:</label>
+			<p>{{{contact}}}</p>
+
+		</div>
+	</div>
+
+</template>

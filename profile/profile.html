@@ -1,0 +1,42 @@
+<template name="profile">
+	<div class="profile">	
+
+
+
+	Welcome {{currentUser.username}}
+
+	{{#if profileJobs.count}}
+ 	
+	{{#each profileJobs}} 
+	<table>	
+		<tr>
+		
+			
+			<td>
+			
+				<a href=""><p class="short-desc">{{shortJobDesc}}</p></a>
+
+				<p class="company">{{company}}</p>
+				{{location}}
+			</td>
+			<td>
+				<p class="date">{{formatDate date}}</p>
+			</td>
+			
+		</tr>
+				
+	</table>
+	{{/each}}
+
+	{{else}}
+	
+	<h1>You haven't posted any jobs yet</h1>
+	{{/if}}
+	
+
+	</div>
+	
+     	
+
+</template>
+

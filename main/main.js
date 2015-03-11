@@ -1,4 +1,4 @@
-var Jobs = new Mongo.Collection('jobs');
+Jobs = new Mongo.Collection('jobs');
 
 Accounts.config({
 	sendVerificationEmail: true
@@ -11,13 +11,9 @@ if (Meteor.isServer) {
    
     	return Jobs.find();
 
-   
-
-
   });
 
 
-  
 }
 
 
@@ -36,7 +32,6 @@ if (Meteor.isClient) {
       });
  	 });
 	}
-
 
 
 	Template.jobs.helpers({
@@ -68,7 +63,7 @@ if (Meteor.isClient) {
 	  	"submit form": function (event) {
 	    // This function is called when the new task form is submitted
 	    event.preventDefault()	
-
+	    var createdBy = Meteor.user()._id;
 	    var company = event.target.company.value;
 	    var companyUrl = event.target.companyUrl.value;
 	    var tags = $("#tags").tagsinput('items');
@@ -81,6 +76,7 @@ if (Meteor.isClient) {
 	    var contact = $('.textarea').eq(4).code();
 
 	    Jobs.insert({
+	      "createdBy": createdBy,
 	      "company": company,
 	      "companyUrl": companyUrl,
 	      "tags": tags,
@@ -90,12 +86,14 @@ if (Meteor.isClient) {
 	      "bonus": bonus,
 	      "perks": perks,
 	      "contact": contact,
-	      "date": new Date() // current time
+	      "date":  Date.now() // current time
 	    });
 
-	    console.log(tags)
+	   
 	    // Prevent default form submit
 	    return false;
+
+	    Router.go('/');
 	  }
 });
 
@@ -137,10 +135,12 @@ Template.loginRegister.events({
           // The user might not have been found, or their passwword
           // could be incorrect. Inform the user that their
           // login attempt has failed. 
-        	alert("Wrong username or password")
+        	swal("Wrong username or password")
         else
           // The user has been logged in.
-      		alert("You have logged in")
+      		swal("You have logged in");
+      		$('#logInModal').modal('hide');
+
       });
          return false; 
       }
@@ -168,24 +168,25 @@ Template.loginRegister.events({
       Accounts.createUser({username: email, email: email, password : password}, function(err){
           if (err) {
             // Inform the user that account creation failed
-            alert('Could not register')
+            swal('Could not register');
           } else {
             // Success. Account has been created and the user
             // has logged in successfully. 
-            alert("You have successfully registered!")
+            swal("You have successfully registered!");
+            $('#logInModal').modal('hide');
           }
 
         });
 
       return false;
     } else {
-    	alert("password needs to be atlest 6 characters long")
+    	swal("Password needs to be atlest 6 characters long")
     }
 
     
  	userId = Meteor.user()._id;
 
-	Accounts.sendVerificationEmail(userId);
+	Accounts.sendVerificationEmail(userId); 
 
 	}
   });

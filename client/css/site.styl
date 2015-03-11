@@ -8,6 +8,11 @@ body
 	background-color rgb(249, 249, 249)
 a, a:link, a:hover, a:active, a:visited, a:focus
 	text-decoration none
+.wrapper
+	min-height 100%
+	height auto !important
+  	height 100%
+ 	margin 0 auto -4em
 input
 	display block
 .invisible
@@ -120,7 +125,16 @@ input[type="radio"]
 label[for="engagement"]	
 	display block	
 label[for="tags"]	
-	margin-top 11px	
+	margin-top 11px
+//end postajob
+
+//Profile
+
+.profile
+	min-height 700px
+
+//End Profile	
+
 // Navbar
 .navbar
 	background-color #333
@@ -136,7 +150,13 @@ label[for="tags"]
 	font-weight 200
 	font-family "Lobster"
 	cursor: pointer
-	
+.dropdown
+	display inline-block
+.dropdown-menu
+	border-radius 0px
+.dropdown-menu li a
+	font-size 0.98em
+	font-weight bold		
 .navbar-right 
 	margin-top 50px
 	margin-right 20px
@@ -181,9 +201,7 @@ label[for="tags"]
 // Footer
 .footer
 	background-color white
-	bottom 0px
 	margin-top 80px
-	position relative
 	height 60px
 	width 100%
 	

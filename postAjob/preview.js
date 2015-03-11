@@ -38,7 +38,7 @@ if (Meteor.isClient) {
 	      "bonus": bonus,
 	      "perks": perks,
 	      "contact": contact,
-	      "date": new Date() 
+	      "date": Date.now() 
 	    }
 	    
 

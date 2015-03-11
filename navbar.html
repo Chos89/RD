@@ -17,7 +17,13 @@
 
     		<a href="/postajob"><span class="button">POST A JOB</span></a>
     		 {{#if currentUser}}
-          <span class="button">{{currentUser.username}}</span>
+         <div class="dropdown">
+          <span data-toggle="dropdown" class="button">{{currentUser.username}} <span class="caret"></span></span>
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="/profile">Profile</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" onclick="Meteor.logout()" href="">Log Out</a></li>
+          </ul>
+         </div> 
         {{else}}
     		<a href="#logInModal" id="logIn" data-toggle="modal"><span class="button">LOG IN</span></a>
         {{/if}} 
