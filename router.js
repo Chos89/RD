@@ -41,6 +41,6 @@ Router.route('/job/:_id', function () {
       return Jobs.findOne({_id: this.params._id});
 
     }
-  });
-  console.log(Jobs.findOne({_id: this.params._id}))
+
+   });
 });

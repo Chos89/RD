@@ -1,5 +1,7 @@
 if (Meteor.isClient) {
 
+	var date = new Date();
+
 	Template.form.created = function(){
 		  Session.set('job', []);
 		}
@@ -38,7 +40,7 @@ if (Meteor.isClient) {
 	      "bonus": bonus,
 	      "perks": perks,
 	      "contact": contact,
-	      "date": Date.now() 
+	      "date": moment(date)
 	    }
 	    
 

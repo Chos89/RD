@@ -33,4 +33,28 @@
 		</div>
 	</div>
 
+	<div class="col-md-3 col-md-offset-1">
+		<h4>All jobs by this employer:</h4>
+		{{#each jobs}} 
+		
+		<tr>
+		
+			
+			<td>
+			
+				<a href="/job/{{_id}}"><p class="short-desc">{{shortJobDesc}}</p></a>
+
+				<p class="company">{{company}}</p>
+				{{location}}
+			</td>
+			<td>
+				<p class="date">{{formatDate date}}</p>
+			</td>
+			
+		</tr>
+				
+
+	{{/each}}	
+	</div>
+
 </template>

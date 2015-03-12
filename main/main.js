@@ -22,6 +22,15 @@ if (Meteor.isClient) {
 	
 	Meteor.subscribe("jobs");
 
+	var dateOffset = (24*60*60*1000) * 30;
+	var checkDate = new Date();
+	var storeDate = Date.now();
+	var startDate = checkDate.setTime(checkDate.getTime() - dateOffset);
+
+	
+	console.log(storeDate - startDate);
+
+
 	Template.navbar.rendered = function() {
   		$(function(){
       $("#slideshow").teletype({
@@ -33,13 +42,15 @@ if (Meteor.isClient) {
  	 });
 	}
 
+	
 
 	Template.jobs.helpers({
 	  jobs: function () {
-	    return Jobs.find({}, {sort: {date: -1}});
-	  }
-	});
-
+	  	
+	  	
+	    return Jobs.find({date:{$gte: startDate, $lt:storeDate}}, {sort: {date: -1}});
+	}
+})
 	Template.form.rendered = function(){
 		
 		$(document).ready(function() {
@@ -68,32 +79,35 @@ if (Meteor.isClient) {
 	    var companyUrl = event.target.companyUrl.value;
 	    var tags = $("#tags").tagsinput('items');
 	    var shortJobDesc = event.target.shortJobDesc.value;
+	    var engagement = event.target.engagement.value;
 	    var location = event.target.location.value;
 	    var aboutCompany = $('.textarea').eq(0).code();
 	    var requirement = $('.textarea').eq(1).code();
 	    var bonus = $('.textarea').eq(2).code();
 	    var perks = $('.textarea').eq(3).code();
 	    var contact = $('.textarea').eq(4).code();
-
+	    console.log(storeDate)
 	    Jobs.insert({
 	      "createdBy": createdBy,
 	      "company": company,
 	      "companyUrl": companyUrl,
 	      "tags": tags,
 	      "shortJobDesc": shortJobDesc,
+	      "engagement": engagement,
+	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
 	      "bonus": bonus,
 	      "perks": perks,
 	      "contact": contact,
-	      "date":  Date.now() // current time
+	      "date":  storeDate // current time
 	    });
 
-	   
+	   	swal('Your job has been posted')
+	    Router.go('/');
 	    // Prevent default form submit
 	    return false;
-
-	    Router.go('/');
+	    
 	  }
 });
 
@@ -172,7 +186,11 @@ Template.loginRegister.events({
           } else {
             // Success. Account has been created and the user
             // has logged in successfully. 
+            var userId = Meteor.user()._id;
+
+			Accounts.sendVerificationEmail(userId);
             swal("You have successfully registered!");
+            swal("A validation email has been sent to you email address")
             $('#logInModal').modal('hide');
           }
 
@@ -184,9 +202,7 @@ Template.loginRegister.events({
     }
 
     
- 	userId = Meteor.user()._id;
-
-	Accounts.sendVerificationEmail(userId); 
+ 	 
 
 	}
   });
@@ -194,6 +210,12 @@ Template.loginRegister.events({
 	UI.registerHelper("formatDate", function(date) {
      
         return moment(date).format('Do MMM');
+
+    });
+
+    UI.registerHelper("formatArray", function(array) {
+     
+        return array.join(', ')
 
     });
 
