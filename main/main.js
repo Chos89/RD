@@ -1,5 +1,7 @@
 Jobs = new Mongo.Collection('jobs');
 
+
+
 Accounts.config({
 	sendVerificationEmail: true
 });
@@ -13,12 +15,41 @@ if (Meteor.isServer) {
 
   });
 
+	// var dateOffset = (24*60*60*1000) * 30;
+	// var checkDate = new Date();
+	// var storeDate = Date.now();
+	// var startDate = checkDate.setTime(checkDate.getTime() - dateOffset);
+
+	// SearchSource.defineSource('jobs', function(searchText, options) {
+	//   var options = {date:{$gte: startDate, $lt:storeDate}, sort: {date: -1}, limit: 200};
+
+	//   if(searchText) {
+
+	//     var regExp = buildRegExp(searchText);
+	//     var selector = {$or: [
+	//       {tags: regExp},
+	//       {shortJobDesc: regExp}
+	//     ]};
+	//     return Jobs.find(selector, options).fetch();
+	//   } else {
+	//     return Jobs.find({}, options).fetch();
+	//   }
+	// });
+
+	// function buildRegExp(searchText) {
+	//   // this is dumb implementation
+
+	//   var parts = searchText.trim().split(' ');
+	//   return new RegExp("(" + parts.join('|') + ")", "ig");
+	// }
+
 
 }
 
 
-
 if (Meteor.isClient) {
+
+
 	
 	Meteor.subscribe("jobs");
 
@@ -28,7 +59,52 @@ if (Meteor.isClient) {
 	var startDate = checkDate.setTime(checkDate.getTime() - dateOffset);
 
 	
-	console.log(storeDate - startDate);
+
+	// //Search
+
+	// var options = {
+	//   keepHistory: 1000 * 60 * 5,
+	//   localSearch: true
+	// };
+	// var fields = ['tags', 'shortJobDesc'];
+
+	// JobsSearch = new SearchSource('jobs', fields, options);
+
+	// //var searchText = JobsSearch.getCurrentQuery();
+	
+	
+	// Template.jobs.helpers({
+ //  	jobs: function() {
+ //   	 return JobsSearch.getData({
+ //   	   // transform: function(matchText, regExp) {
+ //   	   //   return matchText.replace(regExp, "<b>$&</b>");
+ // 	     // },
+ // 	     // sort: {date: -1}
+	//     });
+ //  	},
+  
+	//   isLoading: function() {
+	//     return JobsSearch.getStatus().loading;
+	//   }
+	// });
+
+
+	// Template.jobs.rendered = function() {
+	//   JobsSearch.search('');
+	// };
+
+	// Template.jobs.events({
+	//   "keyup #search": _.throttle(function(e) {
+	//     var text = $(e.target).val().trim();
+	//     JobsSearch.search(text);
+	    
+	//   }, 200)
+	// });
+
+
+	
+	// //
+
 
 
 	Template.navbar.rendered = function() {
@@ -42,15 +118,17 @@ if (Meteor.isClient) {
  	 });
 	}
 
+
+	// Template.jobs.helpers({
+	//   jobs: function () {
+	  	
+	  	
+	//     return Jobs.find({date:{$gte: startDate, $lt:storeDate}}, {sort: {date: -1}});
+	// 	}
+	// })
+
 	
 
-	Template.jobs.helpers({
-	  jobs: function () {
-	  	
-	  	
-	    return Jobs.find({date:{$gte: startDate, $lt:storeDate}}, {sort: {date: -1}});
-	}
-})
 	Template.form.rendered = function(){
 		
 		$(document).ready(function() {
@@ -86,7 +164,7 @@ if (Meteor.isClient) {
 	    var bonus = $('.textarea').eq(2).code();
 	    var perks = $('.textarea').eq(3).code();
 	    var contact = $('.textarea').eq(4).code();
-	    console.log(storeDate)
+	   
 	    Jobs.insert({
 	      "createdBy": createdBy,
 	      "company": company,
@@ -109,7 +187,7 @@ if (Meteor.isClient) {
 	    return false;
 	    
 	  }
-});
+	});
 
 
 
@@ -117,7 +195,7 @@ if (Meteor.isClient) {
 
 
 
-Template.loginRegister.events({
+	Template.loginRegister.events({
 
 	"click #notRegistered": function () {
 			$( "#register-form" ).removeClass( "invisible" );
@@ -134,31 +212,31 @@ Template.loginRegister.events({
 
 		},	
 
-    'submit #login-form' : function(e, t){
-      e.preventDefault();
-      // retrieve the input field values
-      var email = t.find('#login-email').value
-        , password = t.find('#login-password').value;
+	'submit #login-form' : function(e, t){
+	      e.preventDefault();
+	      // retrieve the input field values
+	      var email = t.find('#login-email').value
+	        , password = t.find('#login-password').value;
 
-        // Trim and validate your fields here.... 
+	        // Trim and validate your fields here.... 
 
-        // If validation passes, supply the appropriate fields to the
-        // Meteor.loginWithPassword() function.
-        Meteor.loginWithPassword(email, password, function(err){
-        if (err)
-          // The user might not have been found, or their passwword
-          // could be incorrect. Inform the user that their
-          // login attempt has failed. 
-        	swal("Wrong username or password")
-        else
-          // The user has been logged in.
-      		swal("You have logged in");
-      		$('#logInModal').modal('hide');
-
-      });
-         return false; 
-      }
-  });
+	        // If validation passes, supply the appropriate fields to the
+	        // Meteor.loginWithPassword() function.
+	        Meteor.loginWithPassword(email, password, function(err){
+	        if (err)
+	          // The user might not have been found, or their passwword
+	          // could be incorrect. Inform the user that their
+	          // login attempt has failed. 
+	        	{swal("Wrong username or password");}
+	        else {
+	          // The user has been logged in.
+	      		swal("You have logged in");
+	      		$('#logInModal').modal('hide');
+	      	}
+	      	});
+	         return false; 
+	    }
+ 	});
 
 	Template.loginRegister.events({
     'submit #register-form' : function(e, t) {
@@ -188,16 +266,17 @@ Template.loginRegister.events({
             // has logged in successfully. 
             var userId = Meteor.user()._id;
 
-			Accounts.sendVerificationEmail(userId);
             swal("You have successfully registered!");
             swal("A validation email has been sent to you email address")
             $('#logInModal').modal('hide');
+			Accounts.sendVerificationEmail(userId);
           }
 
         });
 
-      return false;
+      	// return false;
     } else {
+
     	swal("Password needs to be atlest 6 characters long")
     }
 
@@ -213,11 +292,4 @@ Template.loginRegister.events({
 
     });
 
-    UI.registerHelper("formatArray", function(array) {
-     
-        return array.join(', ')
-
-    });
-
-   
 }

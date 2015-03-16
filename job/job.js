@@ -10,21 +10,3 @@ if (Meteor.isClient) {
 
  };
 
- // function(){
-
- // 	var a = moment(this.date);
-	// var b = moment(new date);
-	
-
-
- // 	if ( (a.diff(b, 'days')) < 30) {
-
- // 		return this.date
-
- // 	} else {
- 		
- // 		return false
-
-	// }
- // }
-

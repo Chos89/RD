@@ -1,28 +1,31 @@
 <template name="jobs">
 	<div class="col-md-8 col-md-offset-1">
-	<table>	 
-	{{#each jobs}} 
-		
-		<tr>
+	
+	  <input type="text" id="search">
+	
+   <table>	
+        {{#each jobs}}
+          <tr>
 		
 			
 			<td>
 			
-				<a href="/job/{{_id}}"><p class="short-desc">{{shortJobDesc}}</p></a>
+				<a href="/job/{{_id}}"><p class="short-desc">{{{shortJobDesc}}}</p></a>
 
 				<p class="company">{{company}}</p>
 				<p>{{location}}</p>
 				
-			    <p class="tags">{{formatArray tags}}</p>
+			    <p class="tags">{{tags.join ", "}}</p>
 			</td>
 			<td>
 				<p class="date">{{formatDate date}}</p>
 			</td>
 			
 		</tr>
-				
 
-	{{/each}}	
+        {{/each}}
+    
+	 			
 	</table>
 	</div>
 	
