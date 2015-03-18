@@ -1,8 +1,11 @@
 <template name="jobs">
-	<div class="col-md-8 col-md-offset-1">
 	
-	  <input type="text" id="search">
-	
+	<!-- <div class="col-md-3 col-md-offset-3">
+	  <input type="text" id="search" placeholder="Search for jobs here...">
+	  <span><i class="fa fa-search"></i></span>
+
+	</div>  --> 
+<div class="col-md-8 col-md-offset-1">
    <table>	
         {{#each jobs}}
           <tr>
@@ -10,15 +13,16 @@
 			
 			<td>
 			
-				<a href="/job/{{_id}}"><p class="short-desc">{{{shortJobDesc}}}</p></a>
+				<a href="/job/{{_id}}"><span class="short-desc">{{shortJobDesc}}</span></a>
+								<i class="fa fa-clock-o"></i>{{engagement}}
 
-				<p class="company">{{company}}</p>
-				<p>{{location}}</p>
+				<p class="company">{{company}} </p> 
+				<span class="location"><i class="fa fa-globe"></i>{{location}}</span>
 				
 			    <p class="tags">{{tags.join ", "}}</p>
 			</td>
 			<td>
-				<p class="date">{{formatDate date}}</p>
+				<p class="date"><i class="fa fa-calendar"></i>{{formatDate date}}</p>
 			</td>
 			
 		</tr>
@@ -27,6 +31,6 @@
     
 	 			
 	</table>
-	</div>
+</div>
 	
 </template>

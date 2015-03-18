@@ -9,40 +9,14 @@ Accounts.config({
 
 if (Meteor.isServer) {
 
+	//Jobs._ensureIndex({tags: 1, shortJobDesc: 1});
+
 	Meteor.publish("jobs", function () {
    
     	return Jobs.find();
 
   });
-
-	// var dateOffset = (24*60*60*1000) * 30;
-	// var checkDate = new Date();
-	// var storeDate = Date.now();
-	// var startDate = checkDate.setTime(checkDate.getTime() - dateOffset);
-
-	// SearchSource.defineSource('jobs', function(searchText, options) {
-	//   var options = {date:{$gte: startDate, $lt:storeDate}, sort: {date: -1}, limit: 200};
-
-	//   if(searchText) {
-
-	//     var regExp = buildRegExp(searchText);
-	//     var selector = {$or: [
-	//       {tags: regExp},
-	//       {shortJobDesc: regExp}
-	//     ]};
-	//     return Jobs.find(selector, options).fetch();
-	//   } else {
-	//     return Jobs.find({}, options).fetch();
-	//   }
-	// });
-
-	// function buildRegExp(searchText) {
-	//   // this is dumb implementation
-
-	//   var parts = searchText.trim().split(' ');
-	//   return new RegExp("(" + parts.join('|') + ")", "ig");
-	// }
-
+	
 
 }
 
@@ -58,54 +32,6 @@ if (Meteor.isClient) {
 	var storeDate = Date.now();
 	var startDate = checkDate.setTime(checkDate.getTime() - dateOffset);
 
-	
-
-	// //Search
-
-	// var options = {
-	//   keepHistory: 1000 * 60 * 5,
-	//   localSearch: true
-	// };
-	// var fields = ['tags', 'shortJobDesc'];
-
-	// JobsSearch = new SearchSource('jobs', fields, options);
-
-	// //var searchText = JobsSearch.getCurrentQuery();
-	
-	
-	// Template.jobs.helpers({
- //  	jobs: function() {
- //   	 return JobsSearch.getData({
- //   	   // transform: function(matchText, regExp) {
- //   	   //   return matchText.replace(regExp, "<b>$&</b>");
- // 	     // },
- // 	     // sort: {date: -1}
-	//     });
- //  	},
-  
-	//   isLoading: function() {
-	//     return JobsSearch.getStatus().loading;
-	//   }
-	// });
-
-
-	// Template.jobs.rendered = function() {
-	//   JobsSearch.search('');
-	// };
-
-	// Template.jobs.events({
-	//   "keyup #search": _.throttle(function(e) {
-	//     var text = $(e.target).val().trim();
-	//     JobsSearch.search(text);
-	    
-	//   }, 200)
-	// });
-
-
-	
-	// //
-
-
 
 	Template.navbar.rendered = function() {
   		$(function(){
@@ -119,16 +45,15 @@ if (Meteor.isClient) {
 	}
 
 
-	// Template.jobs.helpers({
-	//   jobs: function () {
+	Template.jobs.helpers({
+	  jobs: function () {
 	  	
 	  	
-	//     return Jobs.find({date:{$gte: startDate, $lt:storeDate}}, {sort: {date: -1}});
-	// 	}
-	// })
+	    return Jobs.find({date:{$gte: startDate, $lt:storeDate}}, {sort: {date: -1}});
+		}
+	})
 
 	
-
 	Template.form.rendered = function(){
 		
 		$(document).ready(function() {
@@ -182,6 +107,7 @@ if (Meteor.isClient) {
 	    });
 
 	   	swal('Your job has been posted')
+
 	    Router.go('/');
 	    // Prevent default form submit
 	    return false;
@@ -267,7 +193,7 @@ if (Meteor.isClient) {
             var userId = Meteor.user()._id;
 
             swal("You have successfully registered!");
-            swal("A validation email has been sent to you email address")
+            swal("A validation email has been sent to your email address")
             $('#logInModal').modal('hide');
 			Accounts.sendVerificationEmail(userId);
           }
