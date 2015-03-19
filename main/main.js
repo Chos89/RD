@@ -44,15 +44,6 @@ if (Meteor.isClient) {
  	 });
 	}
 
-
-	Template.jobs.helpers({
-	  jobs: function () {
-	  	
-	  	
-	    return Jobs.find({date:{$gte: startDate, $lt:storeDate}}, {sort: {date: -1}});
-		}
-	})
-
 	
 	Template.form.rendered = function(){
 		
@@ -103,12 +94,13 @@ if (Meteor.isClient) {
 	      "bonus": bonus,
 	      "perks": perks,
 	      "contact": contact,
-	      "date":  storeDate // current time
+	      "date":  Date.now() // current time
 	    });
 
 	   	swal('Your job has been posted')
 
 	    Router.go('/');
+	   // window.location.reload();
 	    // Prevent default form submit
 	    return false;
 	    
