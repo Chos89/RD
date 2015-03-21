@@ -1,8 +1,25 @@
 Jobs = new Mongo.Collection('jobs');
 
+Meteor.methods({
 
+	notVerified: function(){
 
-Accounts.config({
+		swal('Email not verified');
+		
+	},
+
+	wrongUsernamePassword : function(){
+
+		swal('Wrong username or password');	
+	},
+
+	validationEmail: function(){
+			swal('A validation email should arrive shortly');
+	}
+
+})
+
+Accounts.config({ 
 	sendVerificationEmail: true
 });
 
@@ -31,6 +48,7 @@ if (Meteor.isClient) {
 	var checkDate = new Date();
 	var storeDate = Date.now();
 	var startDate = checkDate.setTime(checkDate.getTime() - dateOffset);
+
 
 
 	Template.navbar.rendered = function() {
@@ -100,7 +118,7 @@ if (Meteor.isClient) {
 	   	swal('Your job has been posted')
 
 	    Router.go('/');
-	   // window.location.reload();
+	   
 	    // Prevent default form submit
 	    return false;
 	    
@@ -141,12 +159,13 @@ if (Meteor.isClient) {
 	        // If validation passes, supply the appropriate fields to the
 	        // Meteor.loginWithPassword() function.
 	        Meteor.loginWithPassword(email, password, function(err){
-	        if (err)
+	        if (err){
 	          // The user might not have been found, or their passwword
 	          // could be incorrect. Inform the user that their
 	          // login attempt has failed. 
-	        	{swal("Wrong username or password");}
-	        else {
+	           swal("Wrong username or password");
+	
+	        } else {
 	          // The user has been logged in.
 	      		swal("You have logged in");
 	      		$('#logInModal').modal('hide');
@@ -176,18 +195,21 @@ if (Meteor.isClient) {
 		if (isValidPassword(password)) { 
 
       Accounts.createUser({username: email, email: email, password : password}, function(err){
+
+
           if (err) {
             // Inform the user that account creation failed
             swal('Could not register');
+
           } else {
             // Success. Account has been created and the user
             // has logged in successfully. 
-            var userId = Meteor.user()._id;
+            
 
             swal("You have successfully registered!");
             swal("A validation email has been sent to your email address")
             $('#logInModal').modal('hide');
-			Accounts.sendVerificationEmail(userId);
+			
           }
 
         });
@@ -196,18 +218,41 @@ if (Meteor.isClient) {
     } else {
 
     	swal("Password needs to be atlest 6 characters long")
-    }
+    }}
 
-    
- 	 
-
-	}
+	
   });
+
+
+	Template.main.created = function() {
+	  if (Accounts._verifyEmailToken) {
+	    Accounts.verifyEmail(Accounts._verifyEmailToken, function(err) {
+	      if (err != null) {
+	        if (err.message == 'Verify email link expired [403]') {
+	          swal('Sorry this verification link has expired.')
+	        }
+	      } else {
+	        swal('Thank you! Your email address has been confirmed.')
+	      }
+	    });
+	  }
+	};
 
 	UI.registerHelper("formatDate", function(date) {
      
         return moment(date).format('Do MMM');
 
+    });
+
+    Template.profile.helpers ({ 
+
+    	verified: function(){
+
+    		if (Meteor.user().emails[0].verified) {
+    			return true;
+    		} else {
+    			return false;
+    		}}
     });
 
 }

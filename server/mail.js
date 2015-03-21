@@ -1,13 +1,13 @@
 
 
-  // smtp = {
-  //   username: 'server@remotedesk.work',   // eg: server@gentlenode.com
-  //   password: 'your_password',   // eg: 3eeP1gtizk5eziohfervU
-  //   server:   'smtp.gmail.com',  // eg: mail.gandi.net
-  //   port: 25
-  // }
+  smtp = {
+    username: 'j.ivkovic@remotedesk.work',   // eg: server@gentlenode.com
+    password: '22iy-qxcBNrpkv6v0eAlrQ',   // eg: 3eeP1gtizk5eziohfervU
+    server:   'smtp.mandrillapp.com',  // eg: mail.gandi.net
+    port: 587
+  }
 
-  // process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
 
 
@@ -28,3 +28,23 @@
     return 'Click on the following link to verify your email address: ' + url;
   };
 
+Accounts.onCreateUser(function(options, user) {
+  
+  // we wait for Meteor to create the user before sending an email
+  Meteor.setTimeout(function() {
+    Accounts.sendVerificationEmail(this.userId);
+    console.log(this.userId)
+  }, 2 * 1000);
+
+  return user;
+});
+
+
+// Accounts.validateLoginAttempt(function(attempt){
+//   if (attempt.user && attempt.user.emails && !attempt.user.emails[0].verified ) {
+//    // swal('email not verified');
+
+//     return false; // the login is aborted
+//   }
+//   return true;
+// }); 

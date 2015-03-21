@@ -3,7 +3,9 @@
 
 
 
-	Welcome {{currentUser.username}}
+	<h3>Welcome {{currentUser.username}} </h3>
+
+	Account {{#if verified}} <bold style="color: green">verified</bold> {{else}} <bold style="color: red">not verified</bold> {{/if}}
 
 	{{#if profileJobs.count}}
  	
@@ -30,7 +32,7 @@
 
 	{{else}}
 	
-	<h1>You haven't posted any jobs yet</h1>
+	<h3>You haven't posted any jobs yet</h3>
 	{{/if}}
 	
 

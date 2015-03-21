@@ -12,7 +12,6 @@ JobsSearch = new SearchSource('jobs', fields, options);
 
 Template.jobs.helpers({
   jobs: function() {
-   console.log(JobsSearch.getData({sort: {date: -1}}))
    
 
     return JobsSearch.getData({sort: {date: -1}});

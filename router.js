@@ -14,25 +14,31 @@ Router.route('/postajob', function () {
 	this.render('main');
 	Router.go('/');
 
-} else {
+    } else if ( !Meteor.user().emails[0].verified ) {
 
-  this.render('postajob');
-}
+    	swal("Please verifiy your email to post jobs");
+    	this.render('main');
+		Router.go('/');
+
+	} else {
+
+	  this.render('postajob');
+	}
 });
 
 Router.route('/profile', function () {
-if (!Meteor.user()) {
+	if (!Meteor.user()) {
 
-	
-	this.render('main');
-	Router.go('/');
+		
+		this.render('main');
+		Router.go('/');
 
-} else {
+	} else {
 
-	this.render('profile');
-}
+		this.render('profile');
+	}
 
-  
+	  
 });
 
 Router.route('/job/:_id', function () {
