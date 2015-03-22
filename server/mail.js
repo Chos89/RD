@@ -22,10 +22,20 @@
     return 'Confirm Your Email Address';
   };
 
+  Accounts.emailTemplates.resetPassword.subject = function(user) {
+    return 'Reset you password';
+  };
+
   // A Function that takes a user object and a url, and returns the body text for the email.
   // Note: if you need to return HTML instead, use Accounts.emailTemplates.verifyEmail.html
   Accounts.emailTemplates.verifyEmail.text = function(user, url) {
-    return 'Click on the following link to verify your email address: ' + url;
+    var url = url.replace('#/', 'verify-email/#/')
+    return " To activate your account, simply click the link below:\n\n" + url;
+  };
+
+  Accounts.emailTemplates.resetPassword.text = function(user, url) {
+    var url = url.replace('#/', 'reset-password/#/')
+    return " To reset your password follow this link:\n\n" + url;
   };
 
 Accounts.onCreateUser(function(options, user) {
@@ -39,12 +49,3 @@ Accounts.onCreateUser(function(options, user) {
   return user;
 });
 
-
-// Accounts.validateLoginAttempt(function(attempt){
-//   if (attempt.user && attempt.user.emails && !attempt.user.emails[0].verified ) {
-//    // swal('email not verified');
-
-//     return false; // the login is aborted
-//   }
-//   return true;
-// }); 

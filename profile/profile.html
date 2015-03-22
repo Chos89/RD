@@ -5,7 +5,12 @@
 
 	<h3>Welcome {{currentUser.username}} </h3>
 
-	Account {{#if verified}} <bold style="color: green">verified</bold> {{else}} <bold style="color: red">not verified</bold> {{/if}}
+	Account {{#if verified}} <span style="color: green">verified</span> {{else}} 
+
+		<span style="color: red">not verified</span> 
+
+		<span id="sendVerificationEmail">- Resend verification email </span>
+	{{/if}}
 
 	{{#if profileJobs.count}}
  	

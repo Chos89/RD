@@ -26,6 +26,25 @@ Router.route('/postajob', function () {
 	}
 });
 
+
+Router.route('/verify-email', function () {
+	
+		this.render('verifyEmail');
+	  
+});
+
+Router.route('/forgot-password', function () {
+	
+		this.render('ForgotPassword');
+	  
+});
+
+Router.route('/reset-password', function () {
+	
+		this.render('ResetPassword');
+	  
+});
+
 Router.route('/profile', function () {
 	if (!Meteor.user()) {
 

@@ -1,23 +1,5 @@
 Jobs = new Mongo.Collection('jobs');
 
-Meteor.methods({
-
-	notVerified: function(){
-
-		swal('Email not verified');
-		
-	},
-
-	wrongUsernamePassword : function(){
-
-		swal('Wrong username or password');	
-	},
-
-	validationEmail: function(){
-			swal('A validation email should arrive shortly');
-	}
-
-})
 
 Accounts.config({ 
 	sendVerificationEmail: true
@@ -34,6 +16,11 @@ if (Meteor.isServer) {
 
   });
 	
+	Meteor.methods({
+		sendVerificationEmail: function(){
+				Accounts.sendVerificationEmail(this.userId);
+		}
+	})
 
 }
 
@@ -109,8 +96,8 @@ if (Meteor.isClient) {
 	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
-	      "bonus": bonus,
 	      "perks": perks,
+	      "bonus": bonus,
 	      "contact": contact,
 	      "date":  Date.now() // current time
 	    });
@@ -176,6 +163,16 @@ if (Meteor.isClient) {
  	});
 
 	Template.loginRegister.events({
+
+	'click #forgotPassword': function(){
+	
+		Router.go('forgot-password');
+		$('#logInModal').modal('hide');
+
+	},	
+
+
+
     'submit #register-form' : function(e, t) {
       e.preventDefault();
       var email = t.find('#register-email').value
@@ -199,7 +196,13 @@ if (Meteor.isClient) {
 
           if (err) {
             // Inform the user that account creation failed
-            swal('Could not register');
+            // swal('Could not register');
+
+              if (err.message === 'Email already exists. [403]') {
+	            swal('We are sorry but this email is already used.');
+	          } else {
+	            swal('We are sorry but something went wrong.');
+	          }
 
           } else {
             // Success. Account has been created and the user
@@ -214,7 +217,7 @@ if (Meteor.isClient) {
 
         });
 
-      	// return false;
+      	return false;
     } else {
 
     	swal("Password needs to be atlest 6 characters long")
@@ -224,19 +227,27 @@ if (Meteor.isClient) {
   });
 
 
-	Template.main.created = function() {
+	Template.verifyEmail.created = function() {
+	
 	  if (Accounts._verifyEmailToken) {
 	    Accounts.verifyEmail(Accounts._verifyEmailToken, function(err) {
-	      if (err != null) {
-	        if (err.message == 'Verify email link expired [403]') {
-	          swal('Sorry this verification link has expired.')
-	        }
+	      if (err) {
+	         
+	          swal(
+	          	'Sorry this verification link has expired.',
+	          	'You can resend the verification email from your profile page'
+	         )
+	         Router.go('/');
+	         window.location.reload();
 	      } else {
 	        swal('Thank you! Your email address has been confirmed.')
+	        Router.go('/');
+
 	      }
 	    });
 	  }
 	};
+
 
 	UI.registerHelper("formatDate", function(date) {
      
@@ -244,15 +255,13 @@ if (Meteor.isClient) {
 
     });
 
-    Template.profile.helpers ({ 
-
-    	verified: function(){
+    Template.registerHelper("verified", function(){
 
     		if (Meteor.user().emails[0].verified) {
     			return true;
     		} else {
     			return false;
-    		}}
+    		}
     });
 
 }

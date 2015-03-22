@@ -9,5 +9,13 @@ if (Meteor.isClient) {
 	  
 	});
 
+
+	Template.profile.events({
+
+		"click #sendVerificationEmail": function(){
+				Meteor.call('sendVerificationEmail');
+				swal("A new verification email has been sent")
+		}
+	})
 }	
 
