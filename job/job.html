@@ -11,9 +11,11 @@
 
 			<a href="{{companyUrl}}"><p class="company-url">{{companyUrl}}</p></a>
 
-			<p><i class="fa fa-globe"></i>{{location}}</p>
+			{{#each tags}} <span class="tags">{{this}}</span> {{/each}}
 
-			<p>Posted at {{formatDate date}} <i class="fa fa-calendar"></i></p>
+			<p class="location"><i class="fa fa-globe"></i>{{location}}</p>
+
+			<p><i class="fa fa-calendar"></i> Posted at {{formatDate date}} </p>
 
 			<label>About us:</label>
 			<p>{{{aboutCompany}}}</p>

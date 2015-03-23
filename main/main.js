@@ -120,11 +120,23 @@ if (Meteor.isClient) {
 
 	Template.loginRegister.events({
 
+	"click #showPassword": function(){
+		$("#register-password").attr('type', 'text');
+		$('#showPassword').addClass('invisible');	
+		$('#hidePassword').removeClass('invisible');	
+	},	
+	"click #hidePassword": function(){
+		$("#register-password").attr('type', 'password');
+		$('#showPassword').removeClass('invisible');	
+		$('#hidePassword').addClass('invisible');	
+	},	
+
 	"click #notRegistered": function () {
 			$( "#register-form" ).removeClass( "invisible" );
 			$( "#backToLogin" ).removeClass( "invisible" );
 			$( "#login-form" ).addClass( "invisible" );
 			$( "#notRegistered" ).addClass( "invisible" );
+			$( "#forgotPassword" ).addClass( "invisible" );
 
 		},
 	"click #backToLogin": function () {
@@ -132,6 +144,7 @@ if (Meteor.isClient) {
 			$( "#register-form" ).addClass( "invisible" );
 			$( "#backToLogin" ).addClass( "invisible" );
 			$( "#notRegistered" ).removeClass( "invisible" );
+			$( "#forgotPassword" ).removeClass( "invisible" );
 
 		},	
 
