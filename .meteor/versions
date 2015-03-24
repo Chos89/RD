@@ -77,5 +77,6 @@ twbs:bootstrap@3.3.2
 ui@1.0.6-rc.0
 underscore@1.0.3-rc.0
 url@1.0.4-rc.0
+vazco:universe-html-purifier@1.0.1
 webapp@1.2.0-rc.1
 webapp-hashing@1.0.3-rc.0

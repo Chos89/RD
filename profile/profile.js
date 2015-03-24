@@ -14,7 +14,8 @@ if (Meteor.isClient) {
 
 		"click #sendVerificationEmail": function(){
 				Meteor.call('sendVerificationEmail');
-				swal("A new verification email has been sent")
+				window.location.reload();
+				swal("A new verification email has been sent");
 		}
 	})
 }	

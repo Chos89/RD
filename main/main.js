@@ -77,14 +77,19 @@ if (Meteor.isClient) {
 	    var company = event.target.company.value;
 	    var companyUrl = event.target.companyUrl.value;
 	    var tags = $("#tags").tagsinput('items');
-	    var shortJobDesc = event.target.shortJobDesc.value;
+	    var shortJobDesc = UniHTML.purify(event.target.shortJobDesc.value);
 	    var engagement = event.target.engagement.value;
 	    var location = event.target.location.value;
-	    var aboutCompany = $('.textarea').eq(0).code();
-	    var requirement = $('.textarea').eq(1).code();
-	    var bonus = $('.textarea').eq(2).code();
-	    var perks = $('.textarea').eq(3).code();
-	    var contact = $('.textarea').eq(4).code();
+	    var aboutCompany = UniHTML.purify($('.textarea').eq(0).code());
+	    var requirement = UniHTML.purify($('.textarea').eq(1).code());
+	    var bonus = UniHTML.purify($('.textarea').eq(2).code());
+	    var perks = UniHTML.purify($('.textarea').eq(3).code());
+	    var contact = UniHTML.purify($('.textarea').eq(4).code());
+
+	    if (company.length == 0 || companyUrl.length == 0 || shortJobDesc.length == 0 || aboutCompany.length == 0 || requirement.length == 0 || bonus.length == 0 || perks.length == 0 || contact.length == 0) {
+
+	    	swal('Please fill out all the fields...');
+	    } else {
 	   
 	    Jobs.insert({
 	      "createdBy": createdBy,
@@ -108,7 +113,7 @@ if (Meteor.isClient) {
 	   
 	    // Prevent default form submit
 	    return false;
-	    
+	    }
 	  }
 	});
 
@@ -223,7 +228,7 @@ if (Meteor.isClient) {
             
 
             swal("You have successfully registered!");
-            swal("A validation email has been sent to your email address")
+            swal("A validation email should arive shortly to your email address")
             $('#logInModal').modal('hide');
 			
           }

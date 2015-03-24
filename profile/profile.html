@@ -16,26 +16,31 @@
  	
 	<h4>Your jobs:</h4>
 
-	{{#each profileJobs}} 
 	<table>	
-		<tr>
+        {{#each profileJobs}}
+          <tr>
 		
 			
 			<td>
 			
-				<a href=""><p class="short-desc">{{shortJobDesc}}</p></a>
+				<a href="/job/{{_id}}"><span class="short-desc">{{shortJobDesc}}</span></a>
+								<i class="fa fa-clock-o"></i>{{engagement}}
 
-				<p class="company">{{company}}</p>
-				{{location}}
+				<p class="company">{{company}} </p> 
+				<span class="location"><i class="fa fa-globe"></i>{{location}}</span>
+				
+			    {{#each tags}} <span class="tags">{{this}}</span> {{/each}}
 			</td>
 			<td>
-				<p class="date">{{formatDate date}}</p>
+				<p class="date"><i class="fa fa-calendar"></i>{{formatDate date}}</p>
 			</td>
 			
 		</tr>
-				
+
+        {{/each}}
+    
+	 			
 	</table>
-	{{/each}}
 
 	{{else}}
 	

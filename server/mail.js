@@ -28,14 +28,39 @@
 
   // A Function that takes a user object and a url, and returns the body text for the email.
   // Note: if you need to return HTML instead, use Accounts.emailTemplates.verifyEmail.html
-  Accounts.emailTemplates.verifyEmail.text = function(user, url) {
+  Accounts.emailTemplates.verifyEmail.html = function(user, url) {
     var url = url.replace('#/', 'verify-email/#/')
-    return " To activate your account, simply click the link below:\n\n" + url;
+    return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">" +
+"<html xmlns=\"http://www.w3.org/1999/xhtml\">" +
+"<head>" +
+  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />" +
+  "<meta name=\"viewport\" content=\"width=device-width\"/>" +
+"</head><body>" + 
+
+    "<h1> Remote <span style=\"color: tomato;\"> Desk </span> </h1>" +
+    "<h2> Thanks for using Remote Desk!"  +
+    "<h3>To activate your account, simply click on the link below:</h3>" + 
+    "<a href=" + url + ">Confirm you email</a> " + 
+
+    "</body>" +
+    "</html>";
   };
 
-  Accounts.emailTemplates.resetPassword.text = function(user, url) {
+  Accounts.emailTemplates.resetPassword.html = function(user, url) {
     var url = url.replace('#/', 'reset-password/#/')
-    return " To reset your password follow this link:\n\n" + url;
+    return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">" +
+"<html xmlns=\"http://www.w3.org/1999/xhtml\">" +
+"<head>" +
+  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />" +
+  "<meta name=\"viewport\" content=\"width=device-width\"/>" +
+"</head><body>" + 
+
+    "<h1> Remote <span style=\"color: tomato;\"> Desk </span> </h1>" +
+    "<h3>To reset your password click on the link below:</h3>" + 
+    "<a href=" + url + ">Reset password</a> " + 
+
+    "</body>" +
+    "</html>";
   };
 
 Accounts.onCreateUser(function(options, user) {
@@ -44,7 +69,7 @@ Accounts.onCreateUser(function(options, user) {
   Meteor.setTimeout(function() {
     Accounts.sendVerificationEmail(this.userId);
     console.log(this.userId)
-  }, 2 * 1000);
+  }, 3 * 1000);
 
   return user;
 });
