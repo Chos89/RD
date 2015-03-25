@@ -9,9 +9,11 @@
 			<span class="short-desc">- {{shortJobDesc}}</span>
 			<span class="engagement"><i class="fa fa-clock-o"></i>{{engagement}}</span>
 
-			<a href="{{companyUrl}}"><p class="company-url">{{companyUrl}}</p></a>
+			<a href="{{companyUrl}}" target="_blank"><p class="company-url">{{companyUrl}}</p></a>
 
+			<div class="tags-container">
 			{{#each tags}} <span class="tags">{{this}}</span> {{/each}}
+			</div>
 
 			<p class="location"><i class="fa fa-globe"></i>{{location}}</p>
 
@@ -27,7 +29,7 @@
 			<p>{{{bonus}}}</p>
 
 			<label>Perks:</label>
-			<p>{{perks}}</p>
+			<p>{{{perks}}}</p>
 
 			<label>How to apply:</label>
 			<p>{{{contact}}}</p>

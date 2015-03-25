@@ -1,0 +1,128 @@
+{
+  "format": "web-program-pre1",
+  "manifest": [
+    {
+      "path": "24d8e24268d5ae99cf5eb7a9ad7c6319f115ffdf.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/24d8e24268d5ae99cf5eb7a9ad7c6319f115ffdf.js",
+      "size": 649183,
+      "hash": "24d8e24268d5ae99cf5eb7a9ad7c6319f115ffdf"
+    },
+    {
+      "path": "89d11a086afa309c98c76d8c81aad982d6f1c528.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/89d11a086afa309c98c76d8c81aad982d6f1c528.css?meteor_css_resource=true",
+      "size": 165900,
+      "hash": "89d11a086afa309c98c76d8c81aad982d6f1c528"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+      "size": 20127,
+      "hash": "86b6f62b7853e67d3e635f6512a5a5efc58ea3c3"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+      "size": 108738,
+      "hash": "de51a8494180a6db074af2dee2383f0a363c5b08"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+      "size": 45404,
+      "hash": "44bc1850f570972267b169ae18f1cb06b611ffa2"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff",
+      "size": 23424,
+      "hash": "278e49a86e634da6f2a02f3b47dd9d2a8f26210f"
+    },
+    {
+      "path": "packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/twbs_bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+      "size": 18028,
+      "hash": "ca35b697d99cae4d1b60f2d60fcd37771987eb07"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/fonts/fontawesome-webfont.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/fonts/fontawesome-webfont.eot",
+      "size": 56006,
+      "hash": "0183979056f0b87616cd99d5c54a48f3b771eee6"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/fonts/fontawesome-webfont.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/fonts/fontawesome-webfont.svg",
+      "size": 287007,
+      "hash": "cd980eab6db5fa57db670cb2e4278e67e1a4d6c9"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/fonts/fontawesome-webfont.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/fonts/fontawesome-webfont.ttf",
+      "size": 112160,
+      "hash": "6225ccc4ec94d060f19efab97ca42d842845b949"
+    },
+    {
+      "path": "packages/fortawesome_fontawesome/fonts/fontawesome-webfont.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/fortawesome_fontawesome/fonts/fontawesome-webfont.woff",
+      "size": 65452,
+      "hash": "7d65e0227d0d7cdc1718119cd2a7dce0638f151c"
+    },
+    {
+      "path": "packages/kevohagan_sweetalert/sweetalert/lib/sweet-alert.html",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/kevohagan_sweetalert/sweetalert/lib/sweet-alert.html",
+      "size": 728,
+      "hash": "3efe27a8e5474d1285ec639e9d0dd818f9ffb0ea"
+    },
+    {
+      "path": "app/favicon.ico",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/favicon.ico",
+      "size": 318,
+      "hash": "dc6ac0b0718186717796bac212a2bb61fad61d85"
+    },
+    {
+      "path": "head.html",
+      "where": "internal",
+      "type": "head",
+      "hash": "fdc219b77909e5a206b95c8ae6dc9a75ffcc0d94"
+    }
+  ]
+}

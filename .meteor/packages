@@ -5,18 +5,19 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 stylus
 twbs:bootstrap
 accounts-password
 jquery
 iron:router
 momentjs:moment
-msavin:mongol
 fortawesome:fontawesome
 summernote:summernote
 kevohagan:sweetalert
 meteorhacks:search-source
 matteodem:easy-search
 vazco:universe-html-purifier
+dfischer:prerenderio
+msavin:jetsetter
+msavin:mongol
+spiderable

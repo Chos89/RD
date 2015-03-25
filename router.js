@@ -60,6 +60,14 @@ Router.route('/profile', function () {
 
 	  
 });
+Router.route('/edit/:_id', function(){
+	this.render('edit', {
+		data: function(){
+				
+				return Jobs.findOne({_id: this.params._id})
+		}
+	})	
+})
 
 Router.route('/job/:_id', function () {
   this.render('job', {

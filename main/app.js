@@ -1,5 +1,21 @@
 Jobs = new Mongo.Collection('jobs');
+Jobs.allow({
+	insert: function (userId, doc) {
+		return (userId && doc.createdBy === userId);
+	},
+	update: function(userId, doc){
+		return (userId && doc.createdBy === userId);	
+	}
+});
 
+Meteor.users.allow({
+	insert: function (userId, doc) {
+		return true
+	},
+	update: function (userId, doc, fields, modifier) {
+		return true
+	}
+});
 
 Accounts.config({ 
 	sendVerificationEmail: true
@@ -21,6 +37,8 @@ if (Meteor.isServer) {
 				Accounts.sendVerificationEmail(this.userId);
 		}
 	})
+
+	prerenderio.set('prerenderToken', 'rt3duEtFkHFKBom7Kleq');
 
 }
 

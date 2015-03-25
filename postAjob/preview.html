@@ -9,12 +9,16 @@
 			<p class="company-preview">{{job.company}}</p>
 
 			<span class="short-desc">- {{job.shortJobDesc}}</span>
-			
+
 			<span><i class="fa fa-clock-o"></i>{{job.engagement}}</span>
 
 			<a href="{{job.companyUrl}}">
 				<p class="company-url">{{job.companyUrl}}</p>
 			</a>
+
+			<div class="tags-container">
+			{{#each job.tags}} <span class="tags">{{this}}</span> {{/each}}
+			</div>
 
 			<p><i class="fa fa-globe"></i>{{job.location}}</p>
 
@@ -30,7 +34,7 @@
 			<p>{{{job.bonus}}}</p>
 
 			<label>Perks:</label>
-			<p>{{job.perks}}</p>
+			<p>{{{job.perks}}}</p>
 
 			<label>How to apply:</label>
 			<p>{{{job.contact}}}</p>

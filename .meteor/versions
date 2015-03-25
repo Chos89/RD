@@ -1,9 +1,8 @@
 accounts-base@1.2.0-rc.0
 accounts-password@1.1.0-win.1
 aldeed:template-extension@3.4.3
-autopublish@1.0.3-rc.0
 autoupdate@1.2.0-win.0
-babrahams:editable-json@0.3.10
+babrahams:editable-json@0.3.13
 base64@1.0.3-rc.0
 binary-heap@1.0.3-rc.0
 blaze@2.1.0-rc.2
@@ -14,6 +13,7 @@ check@1.0.5-rc.0
 dburles:mongo-collection-instances@0.3.3
 ddp@1.1.0-rc.1
 deps@1.0.7-rc.0
+dfischer:prerenderio@1.0.5
 ejson@1.0.6-rc.0
 email@1.0.6-rc.0
 fastclick@1.0.3-rc.0
@@ -24,7 +24,6 @@ html-tools@1.0.4-rc.0
 htmljs@1.0.4-rc.0
 http@1.1.0-rc.0
 id-map@1.0.3-rc.0
-insecure@1.0.3-rc.0
 iron:controller@1.0.7
 iron:core@1.0.7
 iron:dynamic-template@1.0.7
@@ -47,13 +46,15 @@ meteor@1.1.5-rc.0
 meteor-platform@1.2.2-rc.0
 meteorhacks:picker@1.0.1
 meteorhacks:search-source@1.2.0
+meteortoys:toykit@0.2.1
 minifiers@1.1.4-win.0
 minimongo@1.0.7-rc.0
 mobile-status-bar@1.0.3-rc.0
 momentjs:moment@2.9.0
 mongo@1.1.0-rc.0
 mongo-livedata@1.0.8-rc.0
-msavin:mongol@0.7.2
+msavin:jetsetter@1.0.0
+msavin:mongol@1.0.7
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.5-win.0
 ordered-dict@1.0.3-rc.0
@@ -68,6 +69,7 @@ session@1.1.0-rc.0
 sha@1.0.3-rc.0
 spacebars@1.0.6-rc.0
 spacebars-compiler@1.0.5-rc.0
+spiderable@1.0.7-rc.0
 srp@1.0.3-rc.0
 stylus@1.0.7-rc.0
 summernote:summernote@0.6.0_1
