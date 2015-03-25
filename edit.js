@@ -34,19 +34,17 @@ if (Meteor.isClient) {
 		$('#companyUrl').val(editData.companyUrl);
 		$('#shortJobDesc').val(editData.shortJobDesc);
 		$('#tags').tagsinput('removeAll');
-		for (var i = editData.tags.length - 1; i >= 0; i--) {
+		for (var i = 0 ; i < editData.tags.length ; i++) {
 			
 			$("#tags").tagsinput('add', editData.tags[i]);
 		};
 		
 		$('#location').val(editData.location);
-		$('#aboutCompany').val(editData.aboutCompany);
-		$('#requirement').val(editData.requirement);
-		$('#bonus').val(editData.bonus);
-		$('#bonus').val(editData.bonus);
-		$('#perks').val(editData.perks);
-		$('#perks').val(editData.perks);
-		$('#contact').val(editData.contact);
+		$('.textarea').eq(0).code(editData.aboutCompany);
+		$('.textarea').eq(1).code(editData.requirement);
+		$('.textarea').eq(2).code(editData.bonus);
+		$('.textarea').eq(3).code(editData.perks);
+		$('.textarea').eq(4).code(editData.contact);
 	};
 		
 
@@ -111,7 +109,7 @@ if (Meteor.isClient) {
 	    if (company.length == 0 || companyUrl.length == 0 || shortJobDesc.length == 0 || aboutCompany.length == 0 || requirement.length == 0 || bonus.length == 0 || perks.length == 0 || contact.length == 0) {
 
 	    	swal('Please fill out all the fields...');
-	    } else {
+	    } else if (this.createdBy == Meteor.user()._id){
 	   
 	    Jobs.update({_id: this._id}, {$set: {
 	      
@@ -130,7 +128,7 @@ if (Meteor.isClient) {
 	    }});
 
 	   	swal('Your job has been edited')
-
+	   	Session.set('edit', {});
 	    Router.go('/');
 	   
 	    // Prevent default form submit

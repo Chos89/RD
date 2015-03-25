@@ -1,6 +1,0 @@
-{
-  "meteorRelease": "WINDOWS-PREVIEW@0.3.0",
-  "clientPaths": {
-    "web.browser": "../web.browser/program.json"
-  }
-}
