@@ -3,17 +3,17 @@ if (Meteor.isClient) {
 
 	Meteor.subscribe('jobs');	
 
-	Template.edit.created = function () {
+	Template.edit.onCreated(function () {
 
 
 		
 		Session.set('edit', Template.currentData());
 		editData = Session.get('edit');
 		
-	};
+	});
 
 
-	Template.edit.rendered = function () {
+	Template.edit.onRendered(function () {
 		
       $(document).ready(function() {
 		  $('.textarea').summernote({
@@ -45,7 +45,7 @@ if (Meteor.isClient) {
 		$('.textarea').eq(2).code(editData.bonus);
 		$('.textarea').eq(3).code(editData.perks);
 		$('.textarea').eq(4).code(editData.contact);
-	};
+	});
 		
 
 	Template.edit.events({

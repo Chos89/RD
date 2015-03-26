@@ -2,9 +2,9 @@ if (Meteor.isClient) {
 
 	var date = new Date();
 
-	Template.form.created = function(){
+	Template.form.onCreated(function(){
 		  Session.set('job', []);
-		}
+	})
 	
 
 

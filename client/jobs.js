@@ -22,9 +22,9 @@ Template.jobs.helpers({
 
 
 
-Template.jobs.rendered = function() {
+Template.jobs.onRendered(function() {
   JobsSearch.search('');
-};
+});
 
 Template.jobs.events({
   "keyup #search": _.throttle(function(e) {

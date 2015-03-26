@@ -38,7 +38,7 @@ if (Meteor.isServer) {
 		}
 	})
 
-	prerenderio.set('prerenderToken', 'rt3duEtFkHFKBom7Kleq');
+	//prerenderio.set('prerenderToken', 'rt3duEtFkHFKBom7Kleq');
 
 }
 
@@ -56,7 +56,7 @@ if (Meteor.isClient) {
 
 
 
-	Template.navbar.rendered = function() {
+	Template.navbar.onRendered(function() {
   		$(function(){
       $("#slideshow").teletype({
         text: [" sometimes the perfect match just isn't near you.", " you feel like working from a beach in Bali.", " you don't feel like relocating.", " technology connects. ^20000000 "],
@@ -65,10 +65,10 @@ if (Meteor.isClient) {
         
       });
  	 });
-	}
+	})
 
 	
-	Template.form.rendered = function(){
+	Template.form.onRendered(function(){
 		
 		$(document).ready(function() {
 		  $('.textarea').summernote({
@@ -83,7 +83,7 @@ if (Meteor.isClient) {
 		$(function() {
     		$("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
 	 	 });
-	}
+	})
 	
 
 		Template.form.events({
@@ -263,7 +263,7 @@ if (Meteor.isClient) {
   });
 
 
-	Template.verifyEmail.created = function() {
+	Template.verifyEmail.onCreated(function() {
 	
 	  if (Accounts._verifyEmailToken) {
 	    Accounts.verifyEmail(Accounts._verifyEmailToken, function(err) {
@@ -282,7 +282,7 @@ if (Meteor.isClient) {
 	      }
 	    });
 	  }
-	};
+	});
 
 
 	UI.registerHelper("formatDate", function(date) {
