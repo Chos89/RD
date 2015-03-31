@@ -8,6 +8,8 @@
 <div class="col-md-8 col-md-offset-1">
    <table>	
         {{#each jobs}}
+        {{#if active}}
+      
           <tr>
 		
 			
@@ -29,10 +31,9 @@
 			</td>
 			
 		</tr>
-
-        {{/each}}
-    
-	 			
+		{{/if}}
+		{{/each}}
+   		
 	</table>
 </div>
 	

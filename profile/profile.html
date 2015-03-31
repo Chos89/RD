@@ -50,7 +50,15 @@
 			
 		</tr>
 
-		<a href="/edit/{{_id}}">Edit</a>
+		<a style="margin: 0 4px;" href="/edit/{{_id}}">Edit</a>
+
+		{{#if active}} 
+
+		<a href="" id="deactivate">Deactivate job</a> 
+		{{else}}
+
+		<a href="" id="activate"> Activate job </a>
+		{{/if}}
 
         {{/each}}
     

@@ -7,7 +7,6 @@
 meteor-platform
 stylus
 twbs:bootstrap
-accounts-password
 jquery
 iron:router
 momentjs:moment
@@ -20,3 +19,7 @@ vazco:universe-html-purifier
 msavin:jetsetter
 msavin:mongol
 spiderable
+accounts-password
+okgrow:analytics
+meteorhacks:sikka
+meteorhacks:kadira

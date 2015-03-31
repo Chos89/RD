@@ -74,7 +74,8 @@ if (Meteor.isClient) {
 		  $('.textarea').summernote({
 		  	height: 300,
 		  	toolbar: [
-		  		['style', ['bold', 'italic', 'underline']],
+		  		['style', ['bold', 'italic', 'underline', 'clear']],
+		  		['fontsize', ['fontsize']],
 		  		['para', ['ul', 'ol', 'paragraph']],
 		  		['insert',['link']]
 		  	]
@@ -100,11 +101,11 @@ if (Meteor.isClient) {
 	    var location = event.target.location.value;
 	    var aboutCompany = UniHTML.purify($('.textarea').eq(0).code());
 	    var requirement = UniHTML.purify($('.textarea').eq(1).code());
-	    var bonus = UniHTML.purify($('.textarea').eq(2).code());
-	    var perks = UniHTML.purify($('.textarea').eq(3).code());
-	    var contact = UniHTML.purify($('.textarea').eq(4).code());
+	    // var bonus = UniHTML.purify($('.textarea').eq(2).code());
+	    // var perks = UniHTML.purify($('.textarea').eq(2).code());
+	    var contact = UniHTML.purify($('.textarea').eq(2).code());
 
-	    if (company.length == 0 || companyUrl.length == 0 || shortJobDesc.length == 0 || aboutCompany.length == 0 || requirement.length == 0 || bonus.length == 0 || perks.length == 0 || contact.length == 0) {
+	    if (company.length == 0 || companyUrl.length == 0 || shortJobDesc.length == 0 || aboutCompany.length == 0 || requirement.length == 0 || contact.length == 0) {
 
 	    	swal('Please fill out all the fields...');
 	    } else {
@@ -119,9 +120,10 @@ if (Meteor.isClient) {
 	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
-	      "perks": perks,
-	      "bonus": bonus,
+	      // "perks": perks,
+	      // "bonus": bonus,
 	      "contact": contact,
+	      "active": 'show',
 	      "date":  Date.now() // current time
 	    });
 
@@ -287,7 +289,7 @@ if (Meteor.isClient) {
 
 	UI.registerHelper("formatDate", function(date) {
      
-        return moment(date).format('Do MMM');
+        return moment(date).format('MMMM Do');
 
     });
 

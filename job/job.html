@@ -8,6 +8,7 @@
 
 			<span class="short-desc">- {{shortJobDesc}}</span>
 			<span class="engagement"><i class="fa fa-clock-o"></i>{{engagement}}</span>
+			<p class="date"><i class="fa fa-calendar"></i> Posted at {{formatDate job.date}} </p>
 
 			<a href="{{companyUrl}}" target="_blank"><p class="company-url">{{companyUrl}}</p></a>
 
@@ -17,21 +18,20 @@
 
 			<p class="location"><i class="fa fa-globe"></i>{{location}}</p>
 
-			<p><i class="fa fa-calendar"></i> Posted at {{formatDate date}} </p>
 
-			<label>About us:</label>
-			<p>{{{aboutCompany}}}</p>
+			<label>About us</label>
+			<p style="font-family: 'Droid Sans' !important;
+	font-size: 16px !important;">{{{aboutCompany}}}</p>
 
-			<label>About you:</label>
-			<p>{{{requirement}}}</p>
+			<label>About you</label>
+			<p style="font-family: 'Droid Sans' !important;
+	font-size: 16px !important;">{{{requirement}}}</p>
 
-			<label>Bonus points:</label>
-			<p>{{{bonus}}}</p>
+<!-- 
+			<label>Perks</label>
+			<p>{{{perks}}}</p> -->
 
-			<label>Perks:</label>
-			<p>{{{perks}}}</p>
-
-			<label>How to apply:</label>
+			<label>How to apply</label>
 			<p>{{{contact}}}</p>
 
 		</div>

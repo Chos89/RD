@@ -23,9 +23,9 @@ if (Meteor.isClient) {
     	var location = event.currentTarget.location.value;
     	var aboutCompany = UniHTML.purify($('.textarea').eq(0).code());
     	var requirement = UniHTML.purify($('.textarea').eq(1).code());
-    	var bonus = UniHTML.purify($('.textarea').eq(2).code());
-    	var perks = UniHTML.purify($('.textarea').eq(3).code());
-    	var contact = UniHTML.purify($('.textarea').eq(4).code());
+    	// var bonus = UniHTML.purify($('.textarea').eq(2).code());
+    	// var perks = UniHTML.purify($('.textarea').eq(2).code());
+    	var contact = UniHTML.purify($('.textarea').eq(2).code());
 	    
 
 	    
@@ -39,8 +39,8 @@ if (Meteor.isClient) {
 	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
-	      "bonus": bonus,
-	      "perks": perks,
+	      // "bonus": bonus,
+	      // "perks": perks,
 	      "contact": contact,
 	      "date": Date.now()
 	    }

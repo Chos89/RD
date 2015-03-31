@@ -17,7 +17,18 @@ Template.jobs.helpers({
     return JobsSearch.getData({sort: {date: -1}});
       
     
-  }
+  },
+
+  active: function(){
+			if (this.active === 'show') {
+
+				return true
+			} else if (this.active === 'hide'){
+
+				return false
+				
+			}
+		}
 });
 
 

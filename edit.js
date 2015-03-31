@@ -19,7 +19,8 @@ if (Meteor.isClient) {
 		  $('.textarea').summernote({
 		  	height: 300,
 		  	toolbar: [
-		  		['style', ['bold', 'italic', 'underline']],
+		  		['style', ['bold', 'italic', 'underline', 'clear']],
+		  		['fontsize', ['fontsize']],
 		  		['para', ['ul', 'ol', 'paragraph']],
 		  		['insert',['link']]
 		  	]
@@ -42,9 +43,9 @@ if (Meteor.isClient) {
 		$('#location').val(editData.location);
 		$('.textarea').eq(0).code(editData.aboutCompany);
 		$('.textarea').eq(1).code(editData.requirement);
-		$('.textarea').eq(2).code(editData.bonus);
-		$('.textarea').eq(3).code(editData.perks);
-		$('.textarea').eq(4).code(editData.contact);
+		// $('.textarea').eq(2).code(editData.bonus);
+		// $('.textarea').eq(2).code(editData.perks);
+		$('.textarea').eq(2).code(editData.contact);
 	});
 		
 
@@ -63,9 +64,9 @@ if (Meteor.isClient) {
     	var location = event.currentTarget.location.value;
     	var aboutCompany = UniHTML.purify($('.textarea').eq(0).code());
     	var requirement = UniHTML.purify($('.textarea').eq(1).code());
-    	var bonus = UniHTML.purify($('.textarea').eq(2).code());
-    	var perks = UniHTML.purify($('.textarea').eq(3).code());
-    	var contact = UniHTML.purify($('.textarea').eq(4).code());
+    	// var bonus = UniHTML.purify($('.textarea').eq(2).code());
+    	// var perks = UniHTML.purify($('.textarea').eq(2).code());
+    	var contact = UniHTML.purify($('.textarea').eq(2).code());
 	    
 
 	    
@@ -79,8 +80,8 @@ if (Meteor.isClient) {
 	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
-	      "bonus": bonus,
-	      "perks": perks,
+	      // "bonus": bonus,
+	      // "perks": perks,
 	      "contact": contact,
 	      "date": Date.now()
 	    }
@@ -102,11 +103,11 @@ if (Meteor.isClient) {
 	    var location = event.target.location.value;
 	    var aboutCompany = UniHTML.purify($('.textarea').eq(0).code());
 	    var requirement = UniHTML.purify($('.textarea').eq(1).code());
-	    var bonus = UniHTML.purify($('.textarea').eq(2).code());
-	    var perks = UniHTML.purify($('.textarea').eq(3).code());
-	    var contact = UniHTML.purify($('.textarea').eq(4).code());
+	    // var bonus = UniHTML.purify($('.textarea').eq(2).code());
+	    // var perks = UniHTML.purify($('.textarea').eq(2).code());
+	    var contact = UniHTML.purify($('.textarea').eq(2).code());
 
-	    if (company.length == 0 || companyUrl.length == 0 || shortJobDesc.length == 0 || aboutCompany.length == 0 || requirement.length == 0 || bonus.length == 0 || perks.length == 0 || contact.length == 0) {
+	    if (company.length == 0 || companyUrl.length == 0 || shortJobDesc.length == 0 || aboutCompany.length == 0 || requirement.length == 0 || contact.length == 0) {
 
 	    	swal('Please fill out all the fields...');
 	    } else if (this.createdBy == Meteor.user()._id){
@@ -121,8 +122,7 @@ if (Meteor.isClient) {
 	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
-	      "perks": perks,
-	      "bonus": bonus,
+	      
 	      "contact": contact,
 	      
 	    }});
