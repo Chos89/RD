@@ -122,7 +122,6 @@ if (Meteor.isClient) {
 	      "location": location,
 	      "aboutCompany": aboutCompany,
 	      "requirement": requirement,
-	      
 	      "contact": contact,
 	      
 	    }});
